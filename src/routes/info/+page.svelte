@@ -2,7 +2,7 @@
 	<div class="max-w-screen grid grid-cols-2 gap-8">
 		<!-- About Section -->
 		<div class="item-left pl-2 text-sm">
-			<p>Based in IE.</p>
+			<p>Based in Inland Empire.</p>
 			<p class="mt-2">Email</p>
 			<p>181819@gmail.com</p>
 			<p class="mt-2">Instagram</p>
