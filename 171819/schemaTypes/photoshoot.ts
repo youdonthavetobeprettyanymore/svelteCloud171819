@@ -66,3 +66,23 @@ export default defineType({
     }),
   ],
 })
+
+export interface PhotoshootData {
+  title: string
+  slug: {current: string}
+  photos: {
+    asset: {
+      url: string
+      metadata?: {
+        dimensions?: {
+          width?: number
+          height?: number
+        }
+      }
+    }
+    info: string
+  }[]
+  photoshootTitle: string
+  photoshootDate: string
+  photoshootInfo: string[]
+}

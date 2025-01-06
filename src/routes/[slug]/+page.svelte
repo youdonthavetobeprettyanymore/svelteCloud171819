@@ -3,6 +3,22 @@
 
 	export let data: { data: PhotoshootData };
 	const { title, photoshootTitle, photoshootInfo, photoshootDate, photos } = data.data;
+
+	function getAspectRatio(photo: any): string {
+		if (
+			photo.asset &&
+			photo.asset.metadata &&
+			photo.asset.metadata.dimensions &&
+			photo.asset.metadata.dimensions.width &&
+			photo.asset.metadata.dimensions.height
+		) {
+			const width = photo.asset.metadata.dimensions.width;
+			const height = photo.asset.metadata.dimensions.height;
+			return `${width}/${height}`;
+		}
+		// Fallback aspect ratio
+		return '16/9';
+	}
 </script>
 
 <main class="mx-auto max-w-7xl p-4">
@@ -16,17 +32,18 @@
 			{/each}
 		</ul>
 
-		<p class="text-sm text-red-400">{photoshootDate}</p>
+		<p class="text-sm text-rose-900">{photoshootDate}</p>
 	</div>
 
 	<!-- Gallery Section. -->
 	<section class="grid grid-cols-2 gap-1">
 		{#each photos as photo}
-			<div>
+			<div class={`aspect-[${getAspectRatio(photo)}] relative`}>
 				<img
 					src={photo.asset.url}
 					alt={photo.info || 'Photo from shoot'}
-					class="h-auto w-full object-cover"
+					class="h-full w-full object-cover"
+					loading="lazy"
 				/>
 				{#if photo.info}
 					<p class="mt-1 text-sm text-gray-600">{photo.info}</p>

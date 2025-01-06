@@ -24,5 +24,17 @@
 				loading="lazy"
 			/>
 		</a>
+		<a
+			href="/south-park"
+			class="group relative m-0 cursor-pointer border-none p-0"
+			aria-label="Playboi Carti"
+		>
+			<img
+				src="/landingPageImages/430112845_827620606073526_2915429404031556355_n.jpg"
+				alt="Playboi Carti"
+				class="block h-full w-full object-cover"
+				loading="lazy"
+			/>
+		</a>
 	</div>
 </section>

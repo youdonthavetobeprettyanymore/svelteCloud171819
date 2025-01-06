@@ -9,7 +9,6 @@ export default defineConfig({
 
   projectId: 'cytjpxnv',
   dataset: 'production',
-
   plugins: [structureTool(), visionTool()],
 
   schema: {
