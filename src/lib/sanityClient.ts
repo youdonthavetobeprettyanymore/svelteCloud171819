@@ -1,10 +1,17 @@
-import sanityClient from '@sanity/client';
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
 
-const client = sanityClient({
-	projectId: 'cytjpxnv', // Replace with your Sanity project ID
-	dataset: 'production', // Replace with your dataset name
-	apiVersion: '2023-01-01', // Use a specific API version
-	useCdn: true // `true` for faster, cached responses
+export const client = createClient({
+	projectId: 'cytjpxnv',
+	dataset: 'production',
+	apiVersion: '2023-01-01',
+	useCdn: true
 });
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: any) {
+	return builder.image(source);
+}
 
 export default client;

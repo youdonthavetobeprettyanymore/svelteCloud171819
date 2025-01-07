@@ -1,23 +1,22 @@
 <script lang="ts">
 	import type { PhotoshootData } from '$lib/types/photoshoot';
+	import { urlFor } from '$lib/sanityClient';
 
 	export let data: { data: PhotoshootData };
 	const { title, photoshootTitle, photoshootInfo, photoshootDate, photos } = data.data;
 
 	function getAspectRatio(photo: any): string {
-		if (
-			photo.asset &&
-			photo.asset.metadata &&
-			photo.asset.metadata.dimensions &&
-			photo.asset.metadata.dimensions.width &&
-			photo.asset.metadata.dimensions.height
-		) {
-			const width = photo.asset.metadata.dimensions.width;
-			const height = photo.asset.metadata.dimensions.height;
+		if (photo?.asset?.metadata?.dimensions?.width && photo?.asset?.metadata?.dimensions?.height) {
+			const { width, height } = photo.asset.metadata.dimensions;
 			return `${width}/${height}`;
 		}
-		// Fallback aspect ratio
 		return '16/9';
+	}
+
+	// Create an optimized URL:
+	function getOptimizedUrl(photo: any) {
+		// Now `photo.asset` includes `_id`, `metadata`, etc.
+		return urlFor(photo.asset).width(800).auto('format').fit('max').url();
 	}
 </script>
 
@@ -37,10 +36,10 @@
 
 	<!-- Gallery Section. -->
 	<section class="grid grid-cols-2 gap-1">
-		{#each photos as photo}
+		{#each photos as photo, i (i)}
 			<div class={`aspect-[${getAspectRatio(photo)}] relative`}>
 				<img
-					src={photo.asset.url}
+					src={getOptimizedUrl(photo)}
 					alt={photo.info || 'Photo from shoot'}
 					class="h-full w-full object-cover"
 					loading="lazy"
