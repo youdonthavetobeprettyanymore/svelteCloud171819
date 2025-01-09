@@ -16,7 +16,7 @@
 	// Create an optimized URL:
 	function getOptimizedUrl(photo: any) {
 		// Now `photo.asset` includes `_id`, `metadata`, etc.
-		return urlFor(photo.asset).width(800).auto('format').fit('max').url();
+		return urlFor(photo.asset).width(2000).quality(100).format('jpg').fit('max').url();
 	}
 </script>
 
