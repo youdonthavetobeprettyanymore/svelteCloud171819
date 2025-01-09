@@ -4,7 +4,7 @@
 		<div class="item-left pl-2 text-sm">
 			<p>Based in Inland Empire.</p>
 			<p class="mt-2">Email</p>
-			<p>181819@gmail.com</p>
+			<p>1818192021@gmail.com</p>
 			<p class="mt-2">Instagram</p>
 			<p>@1812929</p>
 		</div>
