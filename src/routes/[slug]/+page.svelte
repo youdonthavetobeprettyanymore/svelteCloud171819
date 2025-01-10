@@ -83,7 +83,7 @@
 			<div class={`aspect-[${getAspectRatio(photo)}] relative`}>
 				<img
 					src={getOptimizedUrl(photo)}
-					alt={photo.info || 'Photo from shoot'}
+					alt={photo.info || ' '}
 					class="h-full w-full object-cover"
 					loading="lazy"
 				/>
